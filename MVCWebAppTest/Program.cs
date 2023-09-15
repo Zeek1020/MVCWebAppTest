@@ -1,9 +1,18 @@
+using Microsoft.AspNetCore.CookiePolicy;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddHttpClient("default", client => {
+    client.BaseAddress = new Uri( @"https://localhost:7044" );
+});
 
 var app = builder.Build();
+
+app.UseDeveloperExceptionPage();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -19,6 +28,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+
+app.MapDefaultControllerRoute();
 
 app.MapRazorPages();
 

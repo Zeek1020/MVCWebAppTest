@@ -14,7 +14,6 @@ namespace MVCWebAppTest.Pages
 
         public void OnGet()
         {
-
         }
     }
 }

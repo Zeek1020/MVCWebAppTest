@@ -14,6 +14,7 @@ namespace MVCWebAppTest.Pages
 
         public void OnGet()
         {
+            _logger.LogWarning("Privacy logger warning");
         }
     }
 }

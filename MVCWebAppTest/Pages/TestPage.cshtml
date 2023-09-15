@@ -1,0 +1,21 @@
+﻿@page
+@using MVCWebAppTest.Models
+@model TestPageModel
+
+@{
+    Layout = "_Layout";
+    Model.Log( Model.ToString() );
+    string _name = Model.Name;
+    bool _active = Model.Active;
+}
+<h1>This is the TestPage</h1>
+
+@using (Html.BeginForm()) {
+    <table>
+        <tr><td>@Html.LabelFor( m => m.StudentID )</td><td>@Html.DisplayFor(Model => Model.StudentID)</td></tr>
+        <tr><td>@Html.LabelFor( m => m.Name )</td><td>@Html.TextBox( "Name", _name )</td></tr>
+        <tr><td>@Html.LabelFor( m => m.Active )</td><td>@Html.CheckBox( "Active", _active )</td></tr>
+    </table>
+    <br>
+    <input type="submit" value="Submit">
+}

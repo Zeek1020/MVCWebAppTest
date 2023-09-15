@@ -1,0 +1,19 @@
+﻿@using MVCWebAppTest.Models
+@model Student
+
+@{
+    if (Model.Name == string.Empty) Model.Name = "Test";
+}
+
+<div>
+
+@Html.BeginForm( "SubmitUser", "HelloWorld" )
+</br>
+@Html.TextBoxFor( m => m.Name )
+</br>
+@Html.LabelFor( m => m.active )
+@Html.CheckBoxFor( m => m.active )
+</br>
+<button type="submit">Submit</button>
+    
+</div>
