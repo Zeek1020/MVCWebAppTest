@@ -10,6 +10,8 @@ builder.Services.AddHttpClient("default", client => {
     client.BaseAddress = new Uri( @"https://localhost:7044" );
 });
 
+builder.Configuration.AddEnvironmentVariables().AddUserSecrets("eefdac25-715a-40a2-8d26-5612b039bfc5");
+
 var app = builder.Build();
 
 app.UseDeveloperExceptionPage();
