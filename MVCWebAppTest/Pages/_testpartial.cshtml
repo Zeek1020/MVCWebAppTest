@@ -1,19 +1,22 @@
 ﻿@using MVCWebAppTest.Models
+@using Microsoft.AspNetCore.Html;
 @model Student
 
 @{
-    if (Model.Name == string.Empty) Model.Name = "Test";
+    Html.ViewData.ModelState.SetModelValue("Id", Model.Id, Model.Id.ToString() );
+    Html.ViewData.ModelState.SetModelValue("Name", Model.Name, Model.Name );
+    Html.ViewData.ModelState.SetModelValue("Active", Model.active, Model.active.ToString() );
 }
 
-<div>
-
-@Html.BeginForm( "SubmitUser", "HelloWorld" )
-</br>
-@Html.TextBoxFor( m => m.Name )
-</br>
-@Html.LabelFor( m => m.active )
-@Html.CheckBoxFor( m => m.active )
-</br>
-<button type="submit">Submit</button>
-    
-</div>
+@using (Html.BeginForm( "OtherPost", "TestPage", FormMethod.Post )) {
+    <table>
+        <tr><td>@Html.LabelFor( m => m.Id )</td><td>@Html.TextBoxFor( m => m.Id )</td></tr>
+        @*
+        <tr><td>@Html.LabelFor( m => m.Name )</td><td><input type="text" id="Name" name="Name" value="@Model.Name"></td></tr>
+        *@
+        <tr><td>@Html.LabelFor( m => m.Name )</td><td>@Html.EditorFor( m => m.Name, Model.Name )</td></tr>
+        <tr><td>@Html.LabelFor( m => m.active )</td><td>@Html.CheckBoxFor( m => m.active )</td></tr>
+    </table>
+    <br>
+    <input type="submit" formaction="TestPage" value="Submit">
+}
